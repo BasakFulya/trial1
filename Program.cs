@@ -10,7 +10,7 @@ namespace from_user
         static void Main(string[] args)
         {
 
-            //We'll take name,surname from user than show it on the screen.
+            //We'll take name,surname from user then show it on the screen.
             string a;
 
             Console.Write("enter ur name n surname: ");
