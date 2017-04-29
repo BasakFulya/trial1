@@ -12,7 +12,7 @@ namespace assignment
         {
 
             int a = 15, b;
-            b = a++;
+            b = a++;  //we could use b=++a; instead of b=a++; coz they have the same meaning
 
             Console.WriteLine(a);
             Console.WriteLine(b);
