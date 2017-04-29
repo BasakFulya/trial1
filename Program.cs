@@ -3,26 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace from_user
+namespace mode_process
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-            //We'll take name,surname from user then show it on the screen.
-            string a;
-
-            Console.Write("enter ur name n surname: ");
-            a = Console.ReadLine();
-
-            Console.WriteLine(" Hello\t" +a+ "\tWelcome");
-            Console.ReadKey();
-
-
-            //+a+ mission is connect Hello n Welcome n entered name n surname
-            //and we could define string a everywhere just it should be declared before the using a in consolewriteline
-            //string a=Console.Readline();  it could be like this
+            //arithmetic operands
+            int a = 5, b = 4, c = 19, d = 8;
+            Console.WriteLine("mode of a according to b: {0} n mode of c according to d: {1}",a%b, c%d);
+            Console.ReadLine();
         }
     }
 }
