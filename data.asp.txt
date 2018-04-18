@@ -1,0 +1,46 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="datas.aspx.cs" Inherits="repeater.datas" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="width:100px; float=left;">
+            <asp:Repeater ID="RepCatagory" runat="server"
+               <ItemTemplate>
+                   
+                   <asp:LinkButton Text='<%#Eval("CategoryName") %>' CommandArgument='<%#Eval(CategoryId) %>'CommandName= "Category"
+                       
+                       runat="server" />
+               </ItemTemplate>
+                </asp:Repeater>
+        </div>
+        <div style ="width=400px; float=left; margin-left=10px; margin-right=10px;">
+
+            <asp:DataList ID="dataProducts" RepeatColumns="2"  runat="server"
+
+                <ItemTemplate>
+
+
+                    ProductName  :<%#Eval("ProductName") %><br/>Price  :<%#Eval("UnitPrice") %><br />Stok   :<%#Eval("UnitInStock") %><br /><asp:LinkButton  Text="Detail"  CommandArgument='%#Eval("ProductId")' runat="server" />
+
+                </ItemTemplate>
+                </asp:DataList>
+        </div>
+
+        <div style="float:left">
+
+
+            <asp:DetailsView runat="server"  ID="dwDetail" OnItemCommand="dwDetail_ItemCommand" OnItemUpdating="dwDetail_ItemUpdating" />
+
+                
+
+
+        </div>
+
+    </form>
+</body>
+</html>
