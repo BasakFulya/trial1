@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
+
+
+namespace repeater
+{
+    public partial class datas : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            SqlDataAdapter da= new SqlDataAdapter ("SELECT * FROM Categories","Server=.;Database=Nortwind;Integrated Security=SSPI")
+
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            RepCatagory.DataSource = dt;
+            RepCatagory.DataBind();
+
+
+
+
+        }
+
+        protected void dwDetail_ItemCommand(object sender, DetailsViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "Category")
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT *FROM Products  WHERE CategoryId =@cid", "Server=.;Database=Northwind;Integrated Security=SSPI");
+
+                da.SelectCommand.Parameters.AddWithValue("@cid", e.CommandArgument);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataProducts.DataSource = dt;
+                dataProducts.DataBind();
+            }
+
+        }
+
+        protected void dwDetail_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
+        {
+            if(e.CommandName =="Product")
+            {
+
+
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Products WHERE ProductId = @pid", "Server=.;Database=Northwind; Integrated Security=SSPI");
+                da.SelectCommand.Parameters.AddWithValue("@pid", e.CommandArgument);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dwDetail.DataSource = dt;
+                dwDetail.DataBind();
+
+
+            }
+
+
+
+        }
+    }
+}
